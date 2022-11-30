@@ -142,7 +142,7 @@ function ResourceView() {
         <div className="w-[100%] flex items-center justify-center">
           <input
             type="text"
-            placeholder="Search with Service Name or a Date"
+            placeholder="Search with Service Name or a Date (DD/MM/YYYY)"
             className="m-auto mb-20 w-[70%] bg-gray-200 input input-lg text-black"
             value={textr}
             onChange={handleChange}
@@ -163,7 +163,7 @@ function ResourceView() {
             className="rounded-2-none w-46 btn btn-lg"
             onClick={DateFilter}
           >
-            Search with Date
+            Search with Date (DD/MM/YYYY)
           </button>
         </div>
 
@@ -299,7 +299,7 @@ function ResourceView() {
                 <p>{"MeterCategory : " + appData.MeterCategory}</p>
                 <p>{"ResourceGroup : " + appData.ResourceGroup}</p>
                 <p>{"ResourceLocation : " + appData.ResourceLocation}</p>
-                <p>{"Tags : " + JSON.stringify(appData.Tags.environment)}</p>
+                <p>{"Tags : " + JSON.stringify(appData.Tags)}</p>
                 <p>{"UnitOfMeasure : " + appData.UnitOfMeasure}</p>
                 <p>{"ServiceName : " + appData.ServiceName}</p>
               </div>

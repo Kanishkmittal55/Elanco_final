@@ -1,12 +1,10 @@
 import { useState, useContext } from "react";
 import theContext from "../../context/mainContext/theContext";
 import AlertContext from "../../context/alert/AlertContext";
-import { Link } from "react-router-dom";
 
 function ApplicationsSearch() {
   const {
     applicationData,
-    applications,
     clearApplications,
     searchAllApplications,
     getAllApplications

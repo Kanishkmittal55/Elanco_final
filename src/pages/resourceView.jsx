@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import AlertContext from "../context/alert/AlertContext";
 import theContext from "../context/mainContext/theContext";
-import Spinner from "../components/layout/Spinner";
 import NameChartR from "../components/users/NameChartR";
 import CostChartR from "../components/users/CostChartR";
 
@@ -11,11 +10,8 @@ function ResourceView() {
   // Importing Global States
   const {
     resourceData,
-    loading,
     justsearchAllResources,
     filterResourcesByResourceGroup,
-    filteredR,
-    clearFilterResources,
     filterApplicationByDateResources,
     getUniqueDatesResources,
     ResourceDateSet,
@@ -25,17 +21,13 @@ function ResourceView() {
     makeNameGraphResources,
     sortedDates_R,
     desc_sortedDates_R,
-    nameCostSetR,
-    ResourceSearchSet, // To get the Unique Resource Group Name
-    nameCQSetR
+    ResourceSearchSet // To get the Unique Resource Group Name
   } = useContext(theContext);
 
   const { setAlert } = useContext(AlertContext);
 
   // Using local State variable
   const [textr, setTextr] = useState("");
-
-  const [entry, setEntry] = useState("");
 
   const [sortFlag, setSortFlag] = useState("No-filter");
 
@@ -49,6 +41,7 @@ function ResourceView() {
     getUniqueNameResources(textr, params.login2);
     getUniqueDatesResources(textr, params.login2);
     makeNameGraphResources(params.login2);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // So that we type in the Input box
@@ -67,7 +60,7 @@ function ResourceView() {
     e.preventDefault();
     const magicAgain = e.target.innerHTML;
     console.log(magicAgain);
-    setEntry(magicAgain);
+
     filterApplicationByDateResources(magicAgain, params.login2);
   };
 
@@ -75,7 +68,7 @@ function ResourceView() {
     e.preventDefault();
     const magic = e.target.innerHTML;
     console.log(magic);
-    setEntry(magic);
+
     filterResourcesByResourceGroup(magic, params.login2);
   };
 
@@ -92,9 +85,8 @@ function ResourceView() {
   // Clearing the Search Input and state to initiate a new search
   const ClearingFilterSearch = (e) => {
     e.preventDefault();
-    justsearchAllResources(params.login);
+    justsearchAllResources(params.login2);
     setTextr("");
-    setEntry("");
   };
 
   // Handling sort the date in Ascending order
@@ -247,7 +239,7 @@ function ResourceView() {
           </div>
         </div>
 
-        {sortFlag == "dsc-filter" ? (
+        {sortFlag === "dsc-filter" ? (
           <div className="w-[100%] flex flex-row flex-wrap mb-[100px] mt-[100px] items-center justify-center">
             {desc_sortedDates_R.map((entry1) => (
               <button
@@ -258,7 +250,7 @@ function ResourceView() {
               </button>
             ))}
           </div>
-        ) : sortFlag == "asc-filter" ? (
+        ) : sortFlag === "asc-filter" ? (
           <div className="w-[100%] flex flex-row flex-wrap mb-[100px] mt-[100px] items-center justify-center">
             {sortedDates_R.map((entry1) => (
               <button

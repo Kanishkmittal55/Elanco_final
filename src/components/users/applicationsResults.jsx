@@ -4,7 +4,7 @@ import ApplicationItem from "./applicationItem";
 import theContext from "../../context/mainContext/theContext";
 
 function ApplicationResults() {
-  const { applicationData, loading, applications } = useContext(theContext);
+  const { loading, applications } = useContext(theContext);
 
   if (!loading) {
     return (

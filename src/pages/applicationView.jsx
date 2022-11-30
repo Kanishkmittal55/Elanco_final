@@ -3,8 +3,6 @@ import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import AlertContext from "../context/alert/AlertContext";
 import theContext from "../context/mainContext/theContext";
-import Spinner from "../components/layout/Spinner";
-import { Bar } from "react-chartjs-2";
 import NameChart from "../components/users/NameChart";
 import CostChart from "../components/users/CostChart";
 

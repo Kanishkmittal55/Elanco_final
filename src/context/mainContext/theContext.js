@@ -1,10 +1,6 @@
 import { createContext, useReducer } from "react";
-import { useParams } from "react-router-dom";
-import ResourceResults from "../../components/users/resourcesResult";
 import theReducer from "./theReducer";
 import Moment from "moment";
-
-var moment2 = require("moment");
 
 const theContext = createContext();
 
@@ -24,7 +20,6 @@ export const GithubProvider = ({ children }) => {
     nameCostSet: [],
     AppSearchSet: [], // To get the Unique Service Names
     nameCQSet: [],
-    service_graph_data: [],
 
     // --------------------------- State variables of the Resources Section
 
@@ -38,13 +33,8 @@ export const GithubProvider = ({ children }) => {
     nameCostSetR: [],
     ResourceSearchSet: [], // To get the Unique Resource Group Name
     nameCQSetR: [],
-    service_graph_data: [],
-
     loading: false
-    // filteredR: [],
   };
-
-  const params = useParams();
 
   const [state, dispatch] = useReducer(theReducer, initialState);
 
@@ -116,6 +106,8 @@ export const GithubProvider = ({ children }) => {
     const dataNew = data.filter(function (eachResponse, index) {
       if (eachResponse.ServiceName === text2) {
         return true;
+      } else {
+        return false;
       }
     });
 
@@ -161,6 +153,8 @@ export const GithubProvider = ({ children }) => {
     const dates = data.filter(function (eachResponse) {
       if (eachResponse.Date === text2) {
         return true;
+      } else {
+        return false;
       }
     });
 
@@ -264,16 +258,20 @@ export const GithubProvider = ({ children }) => {
         const filteredResponse = entireResponse.filter(function (eachResponse) {
           if (eachResponse.ServiceName === unique2[i]) {
             return true;
+          } else {
+            return false;
           }
         });
 
-        filteredResponse.map(
-          (eachResponse2) => (TCost += parseFloat(eachResponse2.Cost))
-        );
-        filteredResponse.map(
-          (eachResponse2) =>
-            (TConQuan += parseFloat(eachResponse2.ConsumedQuantity))
-        );
+        for (let i = 0; i < filteredResponse.length; i++) {
+          TCost = TCost + parseFloat(filteredResponse[i].Cost);
+        }
+
+        for (let i = 0; i < filteredResponse.length; i++) {
+          TConQuan =
+            TConQuan + parseFloat(filteredResponse[i].ConsumedQuantity);
+        }
+
         costSet.push(TCost);
         cqSet.push(TConQuan);
         TCost = 0;
@@ -383,6 +381,8 @@ export const GithubProvider = ({ children }) => {
     const dataNew = data.filter(function (eachResponse, index) {
       if (eachResponse.ResourceGroup === textr) {
         return true;
+      } else {
+        return false;
       }
     });
 
@@ -427,6 +427,8 @@ export const GithubProvider = ({ children }) => {
     const dates = data.filter(function (eachResponse) {
       if (eachResponse.Date === textr) {
         return true;
+      } else {
+        return false;
       }
     });
 
@@ -539,19 +541,22 @@ export const GithubProvider = ({ children }) => {
         const filteredResponse = entireResponse.filter(function (eachResponse) {
           if (eachResponse.ResourceGroup === unique2[i]) {
             return true;
+          } else {
+            return false;
           }
         });
 
         console.log(filteredResponse);
 
         // Then taking entries total of the entries that belong to every group
-        filteredResponse.map(
-          (eachResponse2) => (TCost += parseFloat(eachResponse2.Cost))
-        );
-        filteredResponse.map(
-          (eachResponse2) =>
-            (TConQuan += parseFloat(eachResponse2.ConsumedQuantity))
-        );
+        for (let i = 0; i < filteredResponse.length; i++) {
+          TCost = TCost + parseFloat(filteredResponse[i].Cost);
+        }
+
+        for (let i = 0; i < filteredResponse.length; i++) {
+          TConQuan =
+            TConQuan + parseFloat(filteredResponse[i].ConsumedQuantity);
+        }
         costSet.push(TCost);
         cqSet.push(TConQuan);
         TCost = 0;

@@ -209,7 +209,7 @@ function ResourceView() {
             <p>
               {" "}
               This program could currently answers Questions like which Resource
-              Group charges the most to manage a reasource ?
+              Group charges the most to manage a resource ?
             </p>
             <p className="mb-[4vh] ">
               {" "}

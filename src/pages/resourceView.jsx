@@ -174,7 +174,10 @@ function ResourceView() {
 
           <div className="mt-[15vh] mb-[10vh] w-[60%] border-solid border-2 border-blue-900 p-[3vh] flex justify-center items-center flex-col">
             <h1>Bar Chart Analysis - </h1>
-            <p>X - Axis ( Resource Groups {params.login2} resource to)</p>
+            <p>
+              X - Axis ( Resource Groups associated with <u>{params.login2}</u>{" "}
+              resource)
+            </p>
             <p className="mb-[5vh]">
               Y - Axis ( Total Consumed Quantity of the Resource Groups
               belonging to this resource){" "}

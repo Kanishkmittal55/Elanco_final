@@ -192,25 +192,30 @@ function ResourceView() {
               {" "}
               For Example - <u>{Resources_names_cq_max}</u>, Resource Group
               takes or consumes the <u>most</u> resources for{" "}
-              <u>{params.login2} </u>Resource present with the company.
+              <u>{params.login2} </u>
             </p>
             <NameChartR />
           </div>
           <div className="mt-[15vh] mb-[10vh] w-[60%] border-solid border-2 border-red-900 p-[3vh] flex justify-center items-center flex-col">
             <h1>Bar Chart Analysis - </h1>
-            <p>X - Axis ( Resource Groups {params.login2} resource to)</p>
+            <p>
+              X - Axis ( Resource Groups associated with <u>{params.login2}</u>{" "}
+              resource)
+            </p>
             <p className="mb-[5vh]">
-              Y - Axis ( The Cost Incurred in providing the service ){" "}
+              Y - Axis ( Assumed to be the Cost Incurred in managing the
+              resource ){" "}
             </p>
             <p>
               {" "}
-              This program currently answers Questions like which Resource Group
-              ranked on top in terms of a specific Resource ?
+              This program could currently answers Questions like which Resource
+              Group charges the most to manage a reasource ?
             </p>
             <p className="mb-[4vh] ">
               {" "}
-              For Example - <u>{Resources_explain_cost}</u>, groups costs the{" "}
-              <u>most</u> for <u>{params.login2} Resource</u>
+              For Example - <u>{Resources_explain_cost}</u>, is the most
+              expensive of all in terms of cost for <u>{params.login2}</u>{" "}
+              resource.
             </p>
             <CostChartR />
           </div>
